@@ -22,9 +22,9 @@ cmake --build build -j --config Release
 
 Good models (04.2026):
 
-| Name | Version | Size | Speed CPU | Speed CUDA GPU (RTX 3060TI) |
+| Name | Version | Size | Speed CPU | Speed CUDA GPU (RTX 3060TI) | Speed VULKAN GPU (Intel IGPU) |
 | --- | --- | --- | --- | --- |
-| [unsloth/gemma-4-E4B-it-GGUF](https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF) | [`UD-Q3_K_XL`](https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF?show_file_info=gemma-4-E4B-it-UD-Q3_K_XL.gguf) | 4.56 GB | 12 Tk/s | 60 Tk/s |
+| [unsloth/gemma-4-E4B-it-GGUF](https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF) | [`UD-Q3_K_XL`](https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF?show_file_info=gemma-4-E4B-it-UD-Q3_K_XL.gguf) | 4.56 GB | 12 Tk/s | 60 Tk/s | 11 Tk/s |
 
 ### Terminal
 
