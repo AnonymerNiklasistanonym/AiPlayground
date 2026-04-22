@@ -98,3 +98,40 @@ The second call updates `todos.md`:
 - [ ] buy eggs
 - [x] bread
 ```
+
+## Clean
+
+### Huggingface
+
+To clean/manage the downloaded huggingface models you can use the tool `hf cache (list|rm <MODEL>)` provided by the Python package `huggingface_hub` (`pacman -S python-huggingface-hub`):
+
+```sh
+hf cache list
+# ID                                    SIZE LAST_ACCESSED LAST_MODIFIED REFS
+# ----------------------------------- ------ ------------- ------------- ----
+# model/unsloth/Qwen2.5-Coder-7B-I...   3.0G 5 days ago    5 days ago    main
+# model/unsloth/gemma-4-E4B-it-GGUF    46.0G 1 day ago     1 day ago     main
+hf cache rm model/unsloth/gemma-4-E4B-it-GGUF
+# About to delete 1 repo(s) totalling 46.0G.
+#   - model/unsloth/gemma-4-E4B-it-GGUF (entire repo)
+# Proceed with deletion? [y/N]: y
+# Delete repo: /home/niklas/.cache/huggingface/hub/models--unsloth--gemma-4-E4B-it-GGUF
+# Cache deletion done. Saved 46.0G.
+# ✓ Deleted 1 repo(s) and 3 revision(s); freed 46.0G.
+#   repos_deleted: 1
+#   revisions_deleted: 3
+#   freed: 46.0G
+```
+
+For long model names there is a trick to use the json format to get the ID:
+
+```sh
+hf cache list --json | jq | grep -E "\"id|\"size"
+#     "id": "model/unsloth/Qwen2.5-Coder-7B-Instruct-128K-GGUF",
+#     "size": "3.0G",
+hf cache list --json | jq '.[] | {id,size}'
+# {
+#   "id": "model/unsloth/Qwen2.5-Coder-7B-Instruct-128K-GGUF",
+#   "size": "3.0G"
+# }
+```
